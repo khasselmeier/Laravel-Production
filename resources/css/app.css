@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+
+@theme {
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* RUN npm run dev ON START!! */
+
+@layer components {
+
+    /* wrapper around the wheel */
+    .zodiac-svg-wrap {
+        display: flex;
+        justify-content: center;
+        padding: 2rem 0;
+    }
+
+    /* main SVG container styling */
+    .zodiac-svg {
+        width: 700px;
+        max-width: 100%;
+        height: auto;
+        filter: drop-shadow(0 30px 80px rgba(0,0,0,0.12));
+    }
+
+    /* individual slices */
+    .zodiac-slice {
+        cursor: pointer;
+        transition: filter 0.15s ease;
+        stroke: #EAB308CC;   /* gold outline */
+        stroke-width: 2.5px;
+    }
+
+    /* alternating slice background colors */
+    .zodiac-slice-a { fill: #1e1b4b; } /* darker indigo */
+    .zodiac-slice-b { fill: #2a2370; } /* lighter indigo */
+
+    /* brighten slice when hovered */
+    .zodiac-slice-link:hover .zodiac-slice {
+        filter: brightness(1.2);
+    }
+
+    /* divider lines between slices */
+    .zodiac-divider {
+        stroke: #EAB308CC; /* gold */
+        stroke-width: 2;
+        pointer-events: none;
+        opacity: 0.9;
+    }
+
+    /* sign text labels */
+    .zodiac-label-text {
+        fill: white;
+        font-size: 16px;
+        font-weight: 600;
+        pointer-events: none;
+    }
+
+    /* center of the wheel */
+    .zodiac-hole {
+        fill: #f9fafb;
+    }
+
+    /* ring around the center hole */
+    .zodiac-hole-ring {
+        fill: none;
+        stroke: rgba(255,255,255,0.65);
+        stroke-width: 18;
+        pointer-events: none;
+    }
+}

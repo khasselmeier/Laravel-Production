@@ -15,12 +15,9 @@ class  DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(HoroscopeSeeder::class);
-
-        /*User::factory()->create([
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-            'email' => 'test@example.com',
-        ]);*/
+        $this->call([
+            AnimalSeeder::class,
+            PetSitterSeeder::class,
+        ]);
     }
 }

@@ -33,22 +33,22 @@
     .zodiac-slice {
         cursor: pointer;
         transition: filter 0.15s ease;
-        stroke: #EAB308CC;   /* gold outline */
+        stroke: rgba(255,255,255,0.65); /* soft white outline */
         stroke-width: 2.5px;
     }
 
-    /* alternating slice background colors */
-    .zodiac-slice-a { fill: #1e1b4b; } /* darker indigo */
-    .zodiac-slice-b { fill: #2a2370; } /* lighter indigo */
+    /* alternating slice background colors (sage) */
+    .zodiac-slice-a { fill: #8fae9b; } /* light sage */
+    .zodiac-slice-b { fill: #6f8f7c; } /* deeper sage */
 
     /* brighten slice when hovered */
     .zodiac-slice-link:hover .zodiac-slice {
-        filter: brightness(1.2);
+        filter: brightness(1.12);
     }
 
     /* divider lines between slices */
     .zodiac-divider {
-        stroke: #EAB308CC; /* gold */
+        stroke: rgba(255,255,255,0.75); /* white */
         stroke-width: 2;
         pointer-events: none;
         opacity: 0.9;
@@ -56,7 +56,7 @@
 
     /* sign text labels */
     .zodiac-label-text {
-        fill: white;
+        fill: #ffffff;
         font-size: 16px;
         font-weight: 600;
         pointer-events: none;
@@ -64,13 +64,13 @@
 
     /* center of the wheel */
     .zodiac-hole {
-        fill: #f9fafb;
+        fill: #ffffff; /* clean white center */
     }
 
     /* ring around the center hole */
     .zodiac-hole-ring {
         fill: none;
-        stroke: rgba(255,255,255,0.65);
+        stroke: rgba(143,174,155,0.55); /* sage-tinted ring */
         stroke-width: 18;
         pointer-events: none;
     }

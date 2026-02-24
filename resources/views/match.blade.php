@@ -1,7 +1,12 @@
 <x-layout>
     <x-slot:heading>
-        Choose Your Unreliable Horoscope
+        Match Me With an Animal
     </x-slot:heading>
+
+    <p class="text-slate-700 mb-6 max-w-2xl">
+        Choose your vibe from the wheel below. The universe
+        will match you with your ideal animal companion.
+    </p>
 
     @php
         //canvas size
@@ -75,33 +80,27 @@
         <svg class="zodiac-svg" viewBox="0 0 {{ $size }} {{ $size }}" role="img" aria-label="Horoscope wheel">
 
             {{-- generate each slice + label --}}
-            @foreach ($horoscopes as $i => $horoscope)
+            {{-- generate each slice + label --}}
+            @foreach ($matchSigns as $i => $sign)
                 @php
-                    //each slice is 30 degrees (360 / 12 slices)
-                    $start = -90 + ($i * 30); //start angle
-                    $end   = $start + 30;     //end angle
-                    $mid   = $start + 15;     //midpoint angle for text label
+                    $start = -90 + ($i * 30);
+                    $end   = $start + 30;
+                    $mid   = $start + 15;
 
-                    //create SVG path for slice
                     $d = $makePath($start, $end);
-
-                    //get label position coordinates
                     [$tx, $ty] = $labelPos($mid);
 
-                    //wrap long sign names into 1–2 lines
-                    $lines = $wrap($horoscope->sign_name);
+                    $lines = $wrap($sign['sign_name']);
                 @endphp
 
-                {{-- clickable slice linking to horoscope page --}}
-                <a href="/horoscopes/{{ $horoscope->id }}" class="zodiac-slice-link" aria-label="{{ $horoscope->sign_name }}">
-                    <path
+                {{-- clickable slice linking to the vibe results page --}}
+                <a href="/match/{{ $sign['id'] }}" class="zodiac-slice-link" aria-label="{{ $sign['sign_name'] }}">                    <path
                         d="{{ $d }}"
-                        {{-- alternate colors for contrast --}}
                         class="zodiac-slice {{ $i % 2 === 0 ? 'zodiac-slice-a' : 'zodiac-slice-b' }}"
                     />
                 </a>
 
-                {{-- text label for each slice --}}
+                {{-- text label --}}
                 <text
                     x="{{ $tx }}"
                     y="{{ $ty }}"
@@ -110,10 +109,8 @@
                     dominant-baseline="middle"
                 >
                     @if (count($lines) === 1)
-                        {{-- single-line label --}}
                         {{ $lines[0] }}
                     @else
-                        {{--two-line label using tspan --}}
                         <tspan x="{{ $tx }}" dy="-0.2em">{{ $lines[0] }}</tspan>
                         <tspan x="{{ $tx }}" dy="1.2em">{{ $lines[1] }}</tspan>
                     @endif

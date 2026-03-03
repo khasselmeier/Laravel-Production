@@ -2,28 +2,25 @@
 
 namespace App\Providers;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Where to redirect users after login/registration.
      */
-    public function register(): void
-    {
-        //
-    }
+    public const HOME = '/pet-sitting';
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        //Model::preventLazyLoading(true);
-        Model::preventsLazyLoading();
+        $this->routes(function () {
+            Route::middleware('web')
+                ->group(base_path('routes/web.php'));
 
-        //Paginator::useBootstrapFive();
+            Route::middleware('api')
+                ->prefix('api')
+                ->group(base_path('routes/api.php'));
+        });
     }
 }

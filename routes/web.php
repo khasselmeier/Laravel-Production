@@ -2,12 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Animal;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SitterProfileController;
+use App\Http\Controllers\PetSittingRequestController;
+use App\Http\Controllers\AccountController;
 
-// RUN npm run dev ON START!!
+//RUN npm run dev ON START!
+//TO GET QUEUE TO WORK RUN php artisan queue:work
+
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/adoption', function () {
     $animals = Animal::latest()->get();
@@ -15,18 +21,19 @@ Route::get('/adoption', function () {
     return view('adoption', [
         'animals' => $animals
     ]);
-});
+})->name('adoption');
 
 Route::get('/adoption/{animal}', function (Animal $animal) {
     return view('animal', ['animal' => $animal]);
-});
-
+})->name('animal.show');
 
 Route::get('/pet-sitting', function () {
-    return view('pet-sitting');
-});
+    return view('pet-sitting.index');
+})->name('pet-sitting.index');
 
 Route::get('/match', function () {
+
+    // ORIGINAL match signs — unchanged
     $matchSigns = [
         ['id' => 1, 'sign_name' => 'Calm'],
         ['id' => 2, 'sign_name' => 'Chaotic'],
@@ -43,12 +50,23 @@ Route::get('/match', function () {
     ];
 
     return view('match', ['matchSigns' => $matchSigns]);
-})->name('match.wheel');
+})->name('match');
 
 Route::get('/match/{id}', function ($id) {
+
     $energyLevels = [
-        1=>'Calm',2=>'Chaotic',3=>'Energetic',4=>'Playful',5=>'Lazy',6=>'Gentle',
-        7=>'Loyal',8=>'Curious',9=>'Shy',10=>'Brave',11=>'Affectionate',12=>'Independent'
+        1=>'Calm',
+        2=>'Chaotic',
+        3=>'Energetic',
+        4=>'Playful',
+        5=>'Lazy',
+        6=>'Gentle',
+        7=>'Loyal',
+        8=>'Curious',
+        9=>'Shy',
+        10=>'Brave',
+        11=>'Affectionate',
+        12=>'Independent'
     ];
 
     $id = (int) $id;
@@ -56,7 +74,7 @@ Route::get('/match/{id}', function ($id) {
 
     $selectedVibe = $energyLevels[$id];
 
-    $animals = \App\Models\Animal::where('energy_level', $selectedVibe)
+    $animals = Animal::where('energy_level', $selectedVibe)
         ->inRandomOrder()
         ->take(9)
         ->get();
@@ -68,10 +86,22 @@ Route::get('/match/{id}', function ($id) {
     ]);
 })->name('match.animals');
 
-Route::get('/match/{id}/animal/{animal}', function ($id, \App\Models\Animal $animal) {
+
+Route::get('/match/{id}/animal/{animal}', function ($id, Animal $animal) {
+
     $energyLevels = [
-        1=>'Calm',2=>'Chaotic',3=>'Energetic',4=>'Playful',5=>'Lazy',6=>'Gentle',
-        7=>'Loyal',8=>'Curious',9=>'Shy',10=>'Brave',11=>'Affectionate',12=>'Independent'
+        1=>'Calm',
+        2=>'Chaotic',
+        3=>'Energetic',
+        4=>'Playful',
+        5=>'Lazy',
+        6=>'Gentle',
+        7=>'Loyal',
+        8=>'Curious',
+        9=>'Shy',
+        10=>'Brave',
+        11=>'Affectionate',
+        12=>'Independent'
     ];
 
     $id = (int) $id;
@@ -85,4 +115,31 @@ Route::get('/match/{id}/animal/{animal}', function ($id, \App\Models\Animal $ani
 
 Route::get('/contact', function () {
     return view('contact');
+})->name('contact');
+
+Route::get('/dashboard', function () {
+    return redirect()->route('pet-sitting.index'); // or route('home')
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+
+    // profile
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // sitter application
+    Route::get('/pet-sitting/sitter/apply', [SitterProfileController::class, 'create'])->name('sitter.apply');
+    Route::post('/pet-sitting/sitter/apply', [SitterProfileController::class, 'store'])->name('sitter.store');
+
+    // owner request
+    Route::get('/pet-sitting/request/create', [PetSittingRequestController::class, 'create'])->name('request.create');
+    Route::post('/pet-sitting/request/create', [PetSittingRequestController::class, 'store'])->name('request.store');
+
+    // account pages
+    Route::get('/account/sitter-profile', [AccountController::class, 'sitterProfile'])->name('account.sitter-profile');
+    Route::get('/account/requests', [AccountController::class, 'requests'])->name('account.requests');
+    Route::get('/account/matches', [AccountController::class, 'matches'])->name('account.matches');
 });
+
+require __DIR__.'/auth.php';

@@ -1,12 +1,10 @@
 <!doctype html>
 <html lang="en" class="h-full bg-[#eef3ef] text-slate-800">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
-          content="width=device-width, user scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Page</title>
+          content="width=device-width, initial-scale=1.0">
+    <title>{{ config('app.name', 'Pet Sitting App') }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -18,113 +16,133 @@
     <nav class="bg-[#8fae9b]/90 backdrop-blur shadow-lg border-b-4 border-white/60">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between">
+
+                <!-- LEFT SIDE -->
                 <div class="flex items-center">
                     <div class="shrink-0">
                         <img class="h-9 w-9 rounded-full ring-2 ring-white/70 shadow"
                              src="{{ asset('images/profile-icon2.png') }}" alt="Logo" />
                     </div>
 
-                    <!-- DESKTOP LINKS -->
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-                            <x-nav-link href="/pet-sitting" :active="request()->is('pet-sitting')">Pet Sitting</x-nav-link>
-                            <x-nav-link href="/adoption" :active="request()->is('adoption')">Adoption</x-nav-link>
-                            <x-nav-link href="/match" :active="request()->is('match')">Match Me</x-nav-link>
+                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                                Home
+                            </x-nav-link>
+
+                            <x-nav-link :href="route('pet-sitting.index')" :active="request()->routeIs('pet-sitting.*')">
+                                Pet Sitting
+                            </x-nav-link>
+
+                            <x-nav-link :href="route('adoption')" :active="request()->routeIs('adoption')">
+                                Adoption
+                            </x-nav-link>
+
+                            <x-nav-link :href="route('match')" :active="request()->routeIs('match')">
+                                Match Me
+                            </x-nav-link>
                         </div>
                     </div>
                 </div>
 
+                <!-- RIGHT SIDE -->
                 <div class="hidden md:block">
-                    <div class="ml-4 flex items-center md:ml-6">
-                        <button type="button"
-                                class="relative rounded-full p-1 text-white hover:text-[#eef3ef] focus:outline-2 focus:outline-offset-2 focus:outline-white">
-                            <span class="absolute -inset-1.5"></span>
-                            <span class="sr-only">View notifications</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                 aria-hidden="true" class="size-6">
-                                <path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
-                                      stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
+                    <div class="ml-4 flex items-center space-x-4">
 
-                        <!-- Profile dropdown -->
-                        <el-dropdown class="relative ml-3">
-                            <button class="relative flex max-w-xs items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-                                <span class="absolute -inset-1.5"></span>
-                                <span class="sr-only">Open user menu</span>
-                                <img src="{{ asset('images/profile-icon2.png') }}"
-                                     alt="Profile icon"
-                                     class="size-8 rounded-full outline -outline-offset-1 outline-white/40" />
-                            </button>
-                        </el-dropdown>
+                        @auth
+                            <div class="text-white text-sm">
+                                {{ Auth::user()->name }}
+                            </div>
+
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit"
+                                        class="text-white hover:text-[#eef3ef] underline text-sm">
+                                    Logout
+                                </button>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}"
+                               class="text-white hover:text-[#eef3ef] text-sm underline">
+                                Login
+                            </a>
+
+                            <a href="{{ route('register') }}"
+                               class="text-white hover:text-[#eef3ef] text-sm underline">
+                                Register
+                            </a>
+                        @endauth
+
                     </div>
                 </div>
 
+                <!-- MOBILE BUTTON -->
                 <div class="-mr-2 flex md:hidden">
                     <button type="button"
-                            command="--toggle"
-                            commandfor="mobile-menu"
-                            class="relative inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-white/20 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-white">
-                        <span class="sr-only">Open main menu</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                             class="size-6">
-                            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                                  stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+                            class="relative inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-white/20">
+                        ☰
                     </button>
                 </div>
+
             </div>
         </div>
 
         <!-- MOBILE MENU -->
-        <el-disclosure id="mobile-menu" hidden class="block md:hidden">
-            <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-                <a href="/"
-                   class="block rounded-md px-3 py-2 text-base font-medium
-                   {{ request()->is('/') ? 'bg-white/60 text-slate-900' : 'text-white hover:bg-white/20 hover:text-white' }}">
-                    Home
-                </a>
+        <div id="mobile-menu" class="hidden md:hidden px-2 pb-3 space-y-1">
 
-                <a href="/pet-sitting"
-                   class="block rounded-md px-3 py-2 text-base font-medium
-                   {{ request()->is('pet-sitting') ? 'bg-white/60 text-slate-900' : 'text-white hover:bg-white/20 hover:text-white' }}">
-                    Pet Sitting
-                </a>
+            <a href="{{ route('home') }}"
+               class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">
+                Home
+            </a>
 
-                <a href="/adoption"
-                   class="block rounded-md px-3 py-2 text-base font-medium
-                   {{ request()->is('adoption') ? 'bg-white/60 text-slate-900' : 'text-white hover:bg-white/20 hover:text-white' }}">
-                    Adoption
-                </a>
+            <a href="{{ route('pet-sitting.index') }}"
+               class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">
+                Pet Sitting
+            </a>
 
-                <a href="/match"
-                   class="block rounded-md px-3 py-2 text-base font-medium
-                   {{ request()->is('match') ? 'bg-white/60 text-slate-900' : 'text-white hover:bg-white/20 hover:text-white' }}">
-                    Match Me
-                </a>
-            </div>
+            <a href="{{ route('adoption') }}"
+               class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">
+                Adoption
+            </a>
 
-            <div class="border-t border-white/40 pt-4 pb-3">
-                <div class="flex items-center px-5">
-                    <div class="shrink-0">
-                        <img class="h-10 w-10 rounded-full"
-                             src="{{ asset('images/profile-icon2.png') }}" alt="Profile icon" />
+            <a href="{{ route('match') }}"
+               class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">
+                Match Me
+            </a>
+
+            <div class="border-t border-white/40 pt-4">
+                @auth
+                    <div class="px-3 text-white text-sm">
+                        {{ Auth::user()->name }}
                     </div>
-                    <div class="ml-3">
-                        <div class="text-base/5 font-medium text-white">Larry Robot</div>
-                        <div class="text-sm font-medium text-white/70">larry@robot.com</div>
+
+                    <form method="POST" action="{{ route('logout') }}" class="px-3 mt-2">
+                        @csrf
+                        <button type="submit"
+                                class="text-white underline text-sm">
+                            Logout
+                        </button>
+                    </form>
+                @else
+                    <div class="px-3 space-y-2">
+                        <a href="{{ route('login') }}" class="block text-white underline text-sm">
+                            Login
+                        </a>
+                        <a href="{{ route('register') }}" class="block text-white underline text-sm">
+                            Register
+                        </a>
                     </div>
-                </div>
+                @endauth
             </div>
-        </el-disclosure>
+        </div>
     </nav>
 
     <!-- HEADER -->
     <header class="relative bg-gradient-to-b from-[#8fae9b] to-[#eef3ef] shadow-md border-b-2 border-white/60">
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-bold tracking-tight text-slate-900">
-                {{ $heading }}
+                {{ $heading ?? '' }}
             </h1>
         </div>
     </header>

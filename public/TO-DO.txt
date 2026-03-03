@@ -1,19 +1,10 @@
-1. make more adoption pages/animals
-    make the animal seeder have separate arrays for each variable (name, type, age, bio, etc)
-        the seeder should randomly create animals based on those arrays
-
-2. make it so when you pick a vibe from the wheel,
-    it will go to a page that will display several animals that match that vibe. the user
-        can then pick an animal from that page that will lead them to their match-result page
-
-3. have an image for each type of animal, that image should be used for the pet image (cat image should
-    be paired with a cat animal, turtle with turtle, dog with dog, etc.)
-
-4. after the user fills out the pet sitter form, they should be matched with animals they are similar to.
+1. after the user fills out the pet sitter form, they should be matched with animals they are similar to.
     make the user fill out/check boxes of different vibes, animals, etc that they are okay/not okay with pet sitting
         ex.) if the user fills out that they enjoy cats and dogs, only match the user with cats and dogs to watch
             ex2.) if the user fills out they like all animals but cannot watch hyperactive pets,
                 do not match them with animals that are hyperactive
 
-5. for the pet sitting, users should be able to register/login to the website and create their own pet sitting application
+2. for the pet sitting, users should be able to register/login to the website and create their own pet sitting application
     (ex. the user wants their pet lizard to be watched for a week while the owner is on vacation)
+
+3. for the pending application, make it so user can view it from their account (after registering/logging in)

@@ -56,53 +56,59 @@ class AnimalSeeder extends Seeder
         $imagesByType = [
             'Cat' => [
                 'https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1200&auto=format&fit=crop',
+                'https://plus.unsplash.com/premium_photo-1677545183884-421157b2da02?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1472491235688-bdc81a63246e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
             'Dog' => [
                 'https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1507149833265-60c372daea22?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?q=80&w=1200&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1561037404-61cd46aa615b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZG9nfGVufDB8fDB8fHww'
             ],
             'Rabbit' => [
                 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1556838803-cc94986e5b53?q=80&w=1200&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1591561582301-7ce6588cc286?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFiYml0fGVufDB8fDB8fHww',
+                'https://images.unsplash.com/photo-1452857297128-d9c29adba80b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cmFiYml0fGVufDB8fDB8fHww'
             ],
             'Parrot' => [
-                'https://images.unsplash.com/photo-1552728089-57bdde30beb3?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1544923408-75c5cef46f14?q=80&w=1200&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1504579264001-833438f93df2?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1586768045025-f7cacc295831?q=80&w=1313&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1538440367084-0a21cb983cee?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fHBhcnJvdHxlbnwwfHwwfHx8MA%3D%3D'
             ],
             'Guinea Pig' => [
-                'https://images.unsplash.com/photo-1558818498-28c1e002b655?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1622445275576-721325763afe?q=80&w=1200&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1512087499053-023f060e2cea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1512483652399-7a1f99aa0dd3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3VpbmVhJTIwcGlnfGVufDB8fDB8fHww',
+                'https://images.unsplash.com/photo-1609309252136-62e4044389ab?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGd1aW5lYSUyMHBpZ3xlbnwwfHwwfHx8MA%3D%3D'
             ],
             'Ferret' => [
-                'https://images.unsplash.com/photo-1615485737457-f07082b32c66?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1615486364524-3f12e08a3b04?q=80&w=1200&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1615087240969-eeff2fa558f2?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1647045965738-94ce0fc81325?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://plus.unsplash.com/premium_photo-1710751040695-d673cec55e6a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
             'Turtle' => [
-                'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?q=80&w=1200&auto=format&fit=crop',
+                'https://plus.unsplash.com/premium_photo-1724311824020-d5aa35632c81?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://plus.unsplash.com/premium_photo-1664303431418-96daeee80139?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dHVydGxlfGVufDB8fDB8fHww',
+                'https://images.unsplash.com/photo-1585696862208-ca12defa3a78?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHR1cnRsZXxlbnwwfHwwfHx8MA%3D%3D'
             ],
             'Hamster' => [
-                'https://images.unsplash.com/photo-1548767797-d8c844163c4c?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1615485737651-9a1b48f73b29?q=80&w=1200&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1425082661705-1834bfd09dca?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1584553421349-3557471bed79?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGFtc3RlcnxlbnwwfHwwfHx8MA%3D%3D',
+                'https://images.unsplash.com/photo-1676918555382-fcd06a483e25?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aGFtc3RlcnxlbnwwfHwwfHx8MA%3D%3D'
             ],
             'Lizard' => [
-                'https://images.unsplash.com/photo-1501706362039-c6e8094b3d20?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?q=80&w=1200&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1610629651605-0b181ad69aab?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1492963892107-740cd39d9ff3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGl6YXJkfGVufDB8fDB8fHww',
+                'https://images.unsplash.com/photo-1615798763618-183906cd14b2?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             ],
             'Bearded Dragon' => [
-                'https://images.unsplash.com/photo-1598387993441-a364f854c3e1?q=80&w=1200&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1619983081563-430f636027fd?q=80&w=1200&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1674484783245-4c065b84daa8?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1651777000971-42922a2e12ad?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YmVhcmRlZCUyMGRyYWdvbnxlbnwwfHwwfHx8MA%3D%3D',
+                'https://images.unsplash.com/photo-1701307742184-b4caa6121681?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJlYXJkZWQlMjBkcmFnb258ZW58MHx8MHx8fDA%3D'
             ],
         ];
 
         // fallback pool (in case a type is missing)
         $fallbackImages = [
-            'https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=1200&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1552728089-57bdde30beb3?q=80&w=1200&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1770983437998-5c16779d7586?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMXx8fGVufDB8fHx8fA%3D%3D'
         ];
 
         // how many animals total
